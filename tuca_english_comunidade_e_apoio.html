@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tuca English — Estude Inglês de Forma Gamificada e Apoie o Projeto</title>
+  <meta name="description" content="Aprenda inglês de forma leve, gamificada e no seu ritmo com o Tuca English. Aberto para toda a comunidade." />
+
+  <!-- Fontes modernas (Plus Jakarta Sans para títulos e Inter para leitura fluida) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            tuca: {
+              50: '#F0FDF4',
+              100: '#DCFCE7',
+              500: '#22C55E',
+              600: '#16A34A',
+              700: '#15803D',
+            },
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-white text-[#0F172A] font-sans antialiased selection:bg-[#DCFCE7] selection:text-[#15803D] overflow-x-hidden">
+
+  <!-- ===================================================================== -->
+  <!-- 1. NAVBAR FIXA E LIMPA                                                -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+
+        <!-- Logo "Tuca" à esquerda (conectado ao index.html) -->
+        <a href="index.html" class="flex items-center gap-2.5 group focus:outline-none">
+          <!-- Ícone SVG limpo remetendo ao Tucano (verde + toque âmbar) -->
+          <div class="w-10 h-10 rounded-xl bg-[#16A34A] flex items-center justify-center shadow-sm shadow-green-600/20 group-hover:scale-105 transition-transform">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <!-- Corpo estilizado do tucano -->
+              <path d="M7 18C7 12.5 9.5 6 14.5 6C15.8 6 16.8 6.4 17.5 7.2L14 10.5V18H7Z" fill="currentColor" />
+              <!-- Bico em âmbar/amarelo -->
+              <path d="M14.5 6C18.2 6 21 7.6 21 10C21 11.4 19.2 12 16.5 11.8L14 10.5L14.5 6Z" fill="#FBBF24" />
+              <!-- Olho -->
+              <circle cx="13" cy="8.8" r="1" fill="#0F172A" />
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-extrabold text-xl tracking-tight text-[#0F172A] leading-none">
+              Tuca<span class="text-[#16A34A]">.</span>
+            </span>
+            <span class="text-[11px] font-medium text-slate-500 leading-tight">English</span>
+          </div>
+        </a>
+
+        <!-- Links âncora no centro (Desktop) -->
+        <nav class="hidden md:flex items-center gap-8" aria-label="Navegação principal">
+          <a href="#beneficios" class="text-sm font-medium text-slate-600 hover:text-[#16A34A] transition-colors">
+            Benefícios
+          </a>
+          <a href="#como-funciona" class="text-sm font-medium text-slate-600 hover:text-[#16A34A] transition-colors">
+            Como Funciona
+          </a>
+          <a href="#apoiar" class="text-sm font-medium text-slate-600 hover:text-[#16A34A] transition-colors flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            Apoie o Projeto
+          </a>
+        </nav>
+
+        <!-- Botões à direita (Desktop) -->
+        <div class="hidden md:flex items-center gap-3">
+          <a href="index.html" class="px-3.5 py-2 rounded-xl text-sm font-medium text-slate-600 hover:text-[#0F172A] hover:bg-slate-100 transition-colors">
+            &larr; Voltar ao Início
+          </a>
+          <a href="#comecar" class="px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-[#16A34A] hover:bg-[#15803D] shadow-sm shadow-green-600/20 transition-all hover:-translate-y-0.5">
+            Começar a Estudar
+          </a>
+        </div>
+
+        <!-- Botão Menu Mobile -->
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="md:hidden p-2.5 rounded-xl text-slate-600 hover:text-[#0F172A] hover:bg-slate-100 transition-colors"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+        >
+          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu Mobile Expansível -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-5 space-y-2 shadow-lg">
+      <a href="#beneficios" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-[#F8FAFC] hover:text-[#16A34A]">
+        Benefícios
+      </a>
+      <a href="#como-funciona" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-[#F8FAFC] hover:text-[#16A34A]">
+        Como Funciona
+      </a>
+      <a href="#apoiar" class="mobile-nav-link block px-3 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-[#F8FAFC] hover:text-[#16A34A]">
+        Apoie o Projeto
+      </a>
+      <div class="pt-3 mt-3 border-t border-slate-100 flex flex-col gap-2.5">
+        <a href="index.html" class="w-full text-center px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors">
+          &larr; Voltar ao Início
+        </a>
+        <a href="#comecar" class="mobile-nav-link w-full text-center px-4 py-3 rounded-xl text-sm font-semibold text-white bg-[#16A34A] hover:bg-[#15803D] transition-colors">
+          Começar a Estudar
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================================================================== -->
+    <!-- 2. HERO SECTION (FOCO NO PÚBLICO EXTERNO)                             -->
+    <!-- ===================================================================== -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-[#F8FAFC] to-white pt-12 pb-16 sm:pt-20 sm:pb-24">
+      <!-- Detalhe decorativo sutil de fundo -->
+      <div class="pointer-events-none absolute -top-24 right-0 w-96 h-96 rounded-full bg-[#DCFCE7]/50 blur-3xl"></div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+
+          <!-- Coluna de Texto (Esquerda) -->
+          <div class="lg:col-span-6 text-center lg:text-left">
+            <!-- Badge superior -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCFCE7] border border-green-200 text-[#15803D] text-xs sm:text-sm font-semibold mb-6">
+              <span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
+              Aberto para toda a comunidade
+            </div>
+
+            <!-- Título forte -->
+            <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#0F172A] tracking-tight leading-[1.15]">
+              Aprenda inglês de forma leve,
+              <span class="text-[#16A34A]">gamificada</span>
+              e no seu ritmo.
+            </h1>
+
+            <!-- Subtítulo -->
+            <p class="mt-5 text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              O <strong>Tuca</strong> nasceu para transformar o ensino de inglês nas escolas públicas e agora está aberto para qualquer pessoa que queira destravar o idioma na prática — sem decoreba chata e com desafios que dão vontade de voltar todo dia.
+            </p>
+
+            <!-- Botões de Ação -->
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5">
+              <a
+                href="#comecar"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl text-base font-semibold text-white bg-[#16A34A] hover:bg-[#15803D] shadow-lg shadow-green-600/20 transition-all hover:-translate-y-0.5"
+              >
+                Quero estudar com o Tuca
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+
+              <a
+                href="#apoiar"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl text-base font-semibold text-[#16A34A] bg-white border-2 border-[#16A34A] hover:bg-[#F0FDF4] transition-all"
+              >
+                <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                </svg>
+                Apoiar o projeto
+              </a>
+            </div>
+
+            <!-- Prova social / Destaques rápidos -->
+            <div class="mt-8 pt-6 border-t border-slate-200/80 flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-500">
+              <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-[#16A34A]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                100% online
+              </span>
+              <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-[#16A34A]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                Celular ou computador
+              </span>
+              <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-[#16A34A]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                Projeto brasileiro independente
+              </span>
+            </div>
+          </div>
+
+          <!-- Coluna Visual: Card Ilustrativo de Gamificação (Direita) -->
+          <div class="lg:col-span-6">
+            <div class="relative max-w-md mx-auto lg:max-w-none">
+              <!-- Card principal simulando o painel do aluno no Tuca -->
+              <div class="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-900/5 p-5 sm:p-6">
+
+                <!-- Cabeçalho do Painel: Sequência e XP -->
+                <div class="flex items-center justify-between gap-3 pb-5 border-b border-slate-100">
+                  <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-2xl bg-[#DCFCE7] text-[#15803D] font-display font-bold text-lg flex items-center justify-center">
+                      TC
+                    </div>
+                    <div>
+                      <p class="text-sm font-bold text-[#0F172A]">Seu Painel no Tuca</p>
+                      <p class="text-xs text-slate-500">Nível 7 &bull; Liga Tucano</p>
+                    </div>
+                  </div>
+
+                  <!-- Badge de Sequência (Streak) em âmbar -->
+                  <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 font-bold text-xs sm:text-sm">
+                    <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd" />
+                    </svg>
+                    12 dias seguidos
+                  </div>
+                </div>
+
+                <!-- Barra de Meta Diária / XP -->
+                <div class="mt-5 p-4 rounded-2xl bg-[#F8FAFC] border border-slate-100">
+                  <div class="flex items-center justify-between text-xs sm:text-sm mb-2">
+                    <span class="font-semibold text-[#0F172A]">Meta de hoje</span>
+                    <span class="font-bold text-[#16A34A]">120 / 150 XP</span>
+                  </div>
+                  <div class="w-full h-3 bg-slate-200 rounded-full overflow-hidden">
+                    <div class="h-full w-4/5 bg-gradient-to-r from-[#16A34A] to-[#22C55E] rounded-full"></div>
+                  </div>
+                  <p class="mt-2 text-xs text-slate-500">
+                    Falta só <strong>1 missão rápida</strong> de música para bater sua meta!
+                  </p>
+                </div>
+
+                <!-- Mini Ranking da Semana -->
+                <div class="mt-5">
+                  <div class="flex items-center justify-between mb-3">
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400">
+                      Ranking da Semana
+                    </h2>
+                    <span class="text-xs font-semibold text-[#16A34A]">Top 3 sobem de liga</span>
+                  </div>
+
+                  <div class="space-y-2">
+                    <!-- 1º Lugar -->
+                    <div class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white border border-slate-100">
+                      <div class="flex items-center gap-3">
+                        <span class="w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-bold text-xs flex items-center justify-center">1</span>
+                        <span class="text-sm font-medium text-slate-700">Mariana S.</span>
+                      </div>
+                      <span class="text-xs font-bold text-slate-600">1.420 XP</span>
+                    </div>
+
+                    <!-- 2º Lugar (Usuário destacado) -->
+                    <div class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-[#DCFCE7]/70 border border-green-200">
+                      <div class="flex items-center gap-3">
+                        <span class="w-6 h-6 rounded-full bg-[#16A34A] text-white font-bold text-xs flex items-center justify-center">2</span>
+                        <span class="text-sm font-bold text-[#0F172A]">Você</span>
+                        <span class="px-2 py-0.5 rounded-full bg-white text-[10px] font-bold text-[#16A34A]">Subindo!</span>
+                      </div>
+                      <span class="text-xs font-bold text-[#15803D]">1.380 XP</span>
+                    </div>
+
+                    <!-- 3º Lugar -->
+                    <div class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white border border-slate-100">
+                      <div class="flex items-center gap-3">
+                        <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 font-bold text-xs flex items-center justify-center">3</span>
+                        <span class="text-sm font-medium text-slate-700">Lucas R.</span>
+                      </div>
+                      <span class="text-xs font-bold text-slate-600">1.210 XP</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Conquista Desbloqueada -->
+                <div class="mt-5 flex items-center gap-3.5 p-3.5 rounded-2xl bg-amber-50/80 border border-amber-200/80">
+                  <div class="w-10 h-10 shrink-0 rounded-xl bg-amber-400 text-white flex items-center justify-center shadow-sm">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-[11px] font-bold uppercase tracking-wide text-amber-700">Conquista Desbloqueada</p>
+                    <p class="text-sm font-bold text-[#0F172A] truncate">Destravando o Inglês Real &bull; +50 XP</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 3. SEÇÃO "POR QUE ESTUDAR NO TUCA?" (4 CARDS)                         -->
+    <!-- ===================================================================== -->
+    <section id="beneficios" class="py-16 sm:py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#16A34A]">
+            Diferenciais do Tuca
+          </span>
+          <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#0F172A] tracking-tight">
+            Por que estudar no Tuca?
+          </h2>
+          <p class="mt-3 text-base text-slate-600">
+            Criamos uma experiência direta ao ponto para você aprender inglês de verdade, mantendo a motivação lá em cima.
+          </p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1: Gamificação -->
+          <div class="p-6 rounded-2xl bg-[#F8FAFC] border border-slate-200/80 hover:border-[#22C55E] hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-[#DCFCE7] text-[#16A34A] flex items-center justify-center mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#0F172A]">
+              Gamificação que vicia no bem
+            </h3>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+              Missões diárias, pontos de XP, conquistas e ranking semanal que transformam o estudo em um hábito leve e divertido.
+            </p>
+          </div>
+
+          <!-- Card 2: Sem decoreba -->
+          <div class="p-6 rounded-2xl bg-[#F8FAFC] border border-slate-200/80 hover:border-[#22C55E] hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#0F172A]">
+              Sem decoreba
+            </h3>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+              Chega de listas infinitas de gramática solta. Aqui o foco é em música, tecnologia, cultura pop e situações reais do dia a dia.
+            </p>
+          </div>
+
+          <!-- Card 3: 100% Online e flexível -->
+          <div class="p-6 rounded-2xl bg-[#F8FAFC] border border-slate-200/80 hover:border-[#22C55E] hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-[#DCFCE7] text-[#16A34A] flex items-center justify-center mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#0F172A]">
+              100% Online e flexível
+            </h3>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+              Estude pelo celular ou computador, no ônibus, no intervalo ou em casa. Você escolhe o horário e o ritmo da sua jornada.
+            </p>
+          </div>
+
+          <!-- Card 4: Educação com propósito -->
+          <div class="p-6 rounded-2xl bg-[#F8FAFC] border border-slate-200/80 hover:border-[#22C55E] hover:shadow-md transition-all">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#0F172A]">
+              Educação com propósito
+            </h3>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">
+              Ao estudar e participar da comunidade Tuca, você fortalece um projeto independente que também leva inglês acessível às escolas públicas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 4. SEÇÃO "COMO FUNCIONA NA PRÁTICA" (3 PASSOS NUMERADOS)              -->
+    <!-- ===================================================================== -->
+    <section id="como-funciona" class="py-16 sm:py-24 bg-[#F8FAFC] border-y border-slate-200/70">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#16A34A]">
+            Simples e direto
+          </span>
+          <h2 class="mt-2 font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#0F172A] tracking-tight">
+            Como funciona na prática
+          </h2>
+          <p class="mt-3 text-base text-slate-600">
+            Em menos de 2 minutos você já está praticando seus primeiros desafios em inglês.
+          </p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <!-- Passo 1 -->
+          <div class="relative bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="w-11 h-11 rounded-2xl bg-[#16A34A] text-white font-display font-extrabold text-lg flex items-center justify-center shadow-sm shadow-green-600/20">
+              1
+            </div>
+            <h3 class="mt-5 font-display font-bold text-xl text-[#0F172A]">
+              Crie sua conta ou acesse a plataforma
+            </h3>
+            <p class="mt-2.5 text-sm sm:text-base text-slate-600 leading-relaxed">
+              Entre direto pelo navegador, sem burocracia e sem precisar instalar nada pesado no seu celular ou computador.
+            </p>
+          </div>
+
+          <!-- Passo 2 -->
+          <div class="relative bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="w-11 h-11 rounded-2xl bg-[#16A34A] text-white font-display font-extrabold text-lg flex items-center justify-center shadow-sm shadow-green-600/20">
+              2
+            </div>
+            <h3 class="mt-5 font-display font-bold text-xl text-[#0F172A]">
+              Pratique alguns minutos por dia
+            </h3>
+            <p class="mt-2.5 text-sm sm:text-base text-slate-600 leading-relaxed">
+              Complete desafios interativos curtos, escute expressões reais e ganhe pontos de experiência mesmo nos dias mais corridos.
+            </p>
+          </div>
+
+          <!-- Passo 3 -->
+          <div class="relative bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="w-11 h-11 rounded-2xl bg-[#16A34A] text-white font-display font-extrabold text-lg flex items-center justify-center shadow-sm shadow-green-600/20">
+              3
+            </div>
+            <h3 class="mt-5 font-display font-bold text-xl text-[#0F172A]">
+              Acompanhe sua evolução e suba no ranking
+            </h3>
+            <p class="mt-2.5 text-sm sm:text-base text-slate-600 leading-relaxed">
+              Mantenha sua sequência ativa, desbloqueie conquistas e veja seu progresso real no inglês semana após semana.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. SEÇÃO DE DOAÇÃO E APOIO ("AJUDE A MANTER O TUCA VIVO E GRATUITO")  -->
+    <!-- ===================================================================== -->
+    <section id="apoiar" class="py-16 sm:py-24 bg-[#F0FDF4]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Cabeçalho da Seção -->
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-green-200 text-[#15803D] text-xs sm:text-sm font-semibold mb-4 shadow-sm">
+            <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+            </svg>
+            Apoio da Comunidade
+          </div>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#0F172A] tracking-tight">
+            Ajude a manter o Tuca vivo e gratuito
+          </h2>
+          <p class="mt-4 text-base text-slate-700 leading-relaxed">
+            O Tuca é um projeto educacional independente, feito com muito carinho para democratizar o ensino de inglês. Manter servidores no ar, domínio, novas atividades e o acesso 100% gratuito para alunos de escolas públicas gera custos reais todos os meses. Qualquer contribuição — mesmo o valor de um cafezinho — faz uma diferença enorme!
+          </p>
+        </div>
+
+        <!-- Card Branco Centralizado de Contribuição -->
+        <div class="bg-white rounded-3xl border border-green-200/80 shadow-xl shadow-green-900/5 p-6 sm:p-10">
+
+          <!-- Passo 1 da Doação: Seletor Interativo de Valores -->
+          <div>
+            <label class="block text-sm font-bold text-[#0F172A] mb-3.5 text-center sm:text-left">
+              1. Escolha um valor simbólico de apoio (opcional, para ver seu impacto):
+            </label>
+
+            <div id="donation-options" class="grid grid-cols-2 sm:grid-cols-5 gap-3" role="radiogroup" aria-label="Valores de contribuição">
+              <!-- R$ 5 -->
+              <button
+                type="button"
+                data-value="5"
+                class="donation-btn relative px-4 py-3.5 rounded-2xl border-2 border-slate-200 bg-white text-slate-700 font-display font-bold text-base hover:border-[#22C55E] transition-all focus:outline-none"
+              >
+                R$ 5
+              </button>
+
+              <!-- R$ 10 (Padrão selecionado + Badge "Mais escolhido") -->
+              <button
+                type="button"
+                data-value="10"
+                class="donation-btn relative px-4 py-3.5 rounded-2xl border-2 border-[#16A34A] bg-[#DCFCE7]/60 text-[#15803D] font-display font-bold text-base transition-all focus:outline-none"
+              >
+                <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-0.5 rounded-full bg-amber-400 text-[#0F172A] text-[10px] font-extrabold uppercase tracking-wide shadow-sm">
+                  Mais escolhido
+                </span>
+                R$ 10
+              </button>
+
+              <!-- R$ 20 -->
+              <button
+                type="button"
+                data-value="20"
+                class="donation-btn relative px-4 py-3.5 rounded-2xl border-2 border-slate-200 bg-white text-slate-700 font-display font-bold text-base hover:border-[#22C55E] transition-all focus:outline-none"
+              >
+                R$ 20
+              </button>
+
+              <!-- R$ 50 -->
+              <button
+                type="button"
+                data-value="50"
+                class="donation-btn relative px-4 py-3.5 rounded-2xl border-2 border-slate-200 bg-white text-slate-700 font-display font-bold text-base hover:border-[#22C55E] transition-all focus:outline-none"
+              >
+                R$ 50
+              </button>
+
+              <!-- Outro valor -->
+              <button
+                type="button"
+                data-value="outro"
+                class="donation-btn col-span-2 sm:col-span-1 relative px-4 py-3.5 rounded-2xl border-2 border-slate-200 bg-white text-slate-700 font-display font-bold text-sm sm:text-base hover:border-[#22C55E] transition-all focus:outline-none"
+              >
+                Outro valor
+              </button>
+            </div>
+
+            <!-- Frase dinâmica de impacto atualizada via JavaScript -->
+            <div class="mt-5 flex items-start gap-3 p-4 rounded-2xl bg-[#F8FAFC] border border-slate-200/80">
+              <div class="w-8 h-8 shrink-0 rounded-xl bg-[#DCFCE7] text-[#16A34A] flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <p id="impact-message" class="text-sm sm:text-base text-slate-700 leading-relaxed">
+                <strong class="text-[#15803D]">R$ 10</strong> ajuda a manter o servidor ativo e estável para dezenas de estudantes praticarem inglês todos os dias.
+              </p>
+            </div>
+          </div>
+
+          <!-- Divisória -->
+          <hr class="my-7 border-slate-200/80" />
+
+          <!-- Passo 2 da Doação: Área de PIX Copia e Cola -->
+          <div>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+              <label for="pix-key-display" class="text-sm font-bold text-[#0F172A]">
+                2. Faça um PIX rápido (sem taxas, 100% vai para o projeto):
+              </label>
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#16A34A]">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                PIX direto ao criador
+              </span>
+            </div>
+
+            <!-- ============================================================= -->
+            <!-- PERSONALIZE AQUI: Substitua a chave PIX abaixo pela sua chave -->
+            <!-- real (e-mail, CPF, CNPJ, telefone ou chave aleatória).        -->
+            <!-- ============================================================= -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-3 rounded-2xl bg-[#F8FAFC] border border-slate-200">
+              <div class="flex-1 min-w-0 px-2 py-1">
+                <span class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                  Chave PIX (E-mail)
+                </span>
+                <input
+                  id="pix-key-display"
+                  type="text"
+                  readonly
+                  value="sua-chave-pix@email.com"
+                  aria-label="Chave PIX para cópia"
+                  class="w-full bg-transparent font-mono text-sm sm:text-base font-bold text-[#0F172A] focus:outline-none truncate"
+                />
+              </div>
+
+              <button
+                id="copy-pix-btn"
+                type="button"
+                class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white bg-[#16A34A] hover:bg-[#15803D] shadow-sm shadow-green-600/20 transition-all active:scale-95 shrink-0"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <span id="copy-pix-btn-text">Copiar Chave PIX</span>
+              </button>
+            </div>
+
+            <!-- Mensagem de Feedback Visual após copiar a chave PIX -->
+            <div
+              id="copy-feedback"
+              role="status"
+              aria-live="polite"
+              class="hidden mt-3 items-center gap-2 px-4 py-2.5 rounded-xl bg-[#DCFCE7] border border-green-200 text-[#15803D] text-sm font-semibold"
+            >
+              <svg class="w-5 h-5 shrink-0 text-[#16A34A]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Chave PIX copiada! Obrigado pelo apoio!</span>
+            </div>
+          </div>
+
+          <!-- Botão Secundário Opcional: Apoio Recorrente / Link Externo -->
+          <div class="mt-6 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-xs sm:text-sm text-slate-500 text-center sm:text-left">
+              Prefere apoiar mensalmente ou via cartão de crédito?
+            </p>
+            <!-- ============================================================= -->
+            <!-- PERSONALIZE AQUI: Troque o href abaixo pelo seu link real     -->
+            <!-- (ex: Apoia.se, Mercado Pago, Ko-fi ou Catarse).               -->
+            <!-- ============================================================= -->
+            <a
+              href="https://apoia.se/seu-link-tuca"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-[#15803D] bg-white border border-green-300 hover:bg-[#F0FDF4] transition-colors"
+            >
+              Apoio recorrente / Cartão
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 6. SEÇÃO FINAL CTA (#comecar)                                         -->
+    <!-- ===================================================================== -->
+    <section id="comecar" class="py-16 sm:py-24 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative overflow-hidden rounded-3xl bg-[#0F172A] px-6 py-12 sm:px-12 sm:py-16 text-center shadow-2xl shadow-slate-900/10">
+          <!-- Detalhe luminoso verde sutil no card escuro -->
+          <div class="pointer-events-none absolute -top-24 -right-24 w-72 h-72 rounded-full bg-[#16A34A]/25 blur-3xl"></div>
+          <div class="pointer-events-none absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-amber-400/15 blur-3xl"></div>
+
+          <div class="relative max-w-2xl mx-auto">
+            <span class="inline-block px-3.5 py-1 rounded-full bg-white/10 text-[#22C55E] text-xs font-bold uppercase tracking-wider mb-4">
+              Comece hoje mesmo
+            </span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight">
+              Pronto para destravar o seu inglês com o Tuca?
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+              Dê o primeiro passo agora. Acesse a plataforma, complete sua primeira missão em poucos minutos e faça parte da nossa comunidade.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+              <!-- =========================================================== -->
+              <!-- PERSONALIZE AQUI: Substitua o href abaixo pelo link oficial -->
+              <!-- de cadastro ou login da sua plataforma Tuca.                -->
+              <!-- =========================================================== -->
+              <a
+                href="https://seu-link-da-plataforma-tuca.com/cadastro"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-base font-bold text-white bg-[#16A34A] hover:bg-[#22C55E] shadow-lg shadow-green-600/30 transition-all hover:-translate-y-0.5"
+              >
+                Acessar a Plataforma Agora
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+
+              <a
+                href="index.html"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl text-base font-semibold text-slate-200 bg-white/10 hover:bg-white/15 border border-white/15 transition-colors"
+              >
+                &larr; Voltar para a Página Principal
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- 7. FOOTER SIMPLES                                                     -->
+  <!-- ===================================================================== -->
+  <footer class="bg-[#F8FAFC] border-t border-slate-200 py-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+
+        <!-- Identidade -->
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-[#16A34A] flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 18C7 12.5 9.5 6 14.5 6C15.8 6 16.8 6.4 17.5 7.2L14 10.5V18H7Z" fill="currentColor" />
+              <path d="M14.5 6C18.2 6 21 7.6 21 10C21 11.4 19.2 12 16.5 11.8L14 10.5L14.5 6Z" fill="#FBBF24" />
+              <circle cx="13" cy="8.8" r="1" fill="#0F172A" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-display font-bold text-base text-[#0F172A] leading-none">Tuca English</p>
+            <p class="text-xs text-slate-500 mt-1">Projeto educacional independente &bull; Feito no Brasil</p>
+          </div>
+        </div>
+
+        <!-- Links de Rodapé -->
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-slate-600">
+          <a href="index.html" class="hover:text-[#16A34A] transition-colors">
+            Página Inicial (Escolas)
+          </a>
+          <a href="#apoiar" class="hover:text-[#16A34A] transition-colors">
+            Apoiar o Projeto
+          </a>
+          <!-- ============================================================= -->
+          <!-- PERSONALIZE AQUI: Substitua pelo link do seu Instagram real.  -->
+          <!-- ============================================================= -->
+          <a
+            href="https://instagram.com/seu-instagram-tuca"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 hover:text-[#16A34A] transition-colors"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+            </svg>
+            Instagram
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- SCRIPTS INTERATIVOS (MENU MOBILE, SELETOR DE DOAÇÃO E CÓPIA DE PIX)   -->
+  <!-- ===================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // -----------------------------------------------------------------------
+      // 1. Controle do Menu Mobile
+      // -----------------------------------------------------------------------
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+      function toggleMobileMenu(forceClose = false) {
+        const isCurrentlyHidden = mobileMenu.classList.contains('hidden');
+        const shouldOpen = forceClose ? false : isCurrentlyHidden;
+
+        mobileMenu.classList.toggle('hidden', !shouldOpen);
+        iconOpen.classList.toggle('hidden', shouldOpen);
+        iconClose.classList.toggle('hidden', !shouldOpen);
+        mobileMenuBtn.setAttribute('aria-expanded', String(shouldOpen));
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
+      }
+
+      // Fecha o menu mobile ao clicar em qualquer link âncora
+      mobileNavLinks.forEach((link) => {
+        link.addEventListener('click', () => toggleMobileMenu(true));
+      });
+
+      // -----------------------------------------------------------------------
+      // 2. Seletor Interativo de Valores de Doação
+      // -----------------------------------------------------------------------
+      const donationButtons = document.querySelectorAll('.donation-btn');
+      const impactMessage = document.getElementById('impact-message');
+
+      // Mensagens de impacto para cada valor escolhido
+      const impactTexts = {
+        '5': '<strong class="text-[#15803D]">R$ 5</strong> paga um cafezinho para manter o código fluindo e ajuda nos custos básicos de hospedagem do Tuca.',
+        '10': '<strong class="text-[#15803D]">R$ 10</strong> ajuda a manter o servidor ativo e estável para dezenas de estudantes praticarem inglês todos os dias.',
+        '20': '<strong class="text-[#15803D]">R$ 20</strong> contribui para a criação de novos desafios interativos, missões com música e melhorias na plataforma.',
+        '50': '<strong class="text-[#15803D]">R$ 50</strong> fortalece o acesso gratuito do Tuca para turmas inteiras de escolas públicas e ajuda a pagar o domínio anual.',
+        'outro': '<strong class="text-[#15803D]">Qualquer valor</strong> escolhido no seu aplicativo de banco faz diferença real para manter o Tuca vivo, independente e gratuito!'
+      };
+
+      const activeClasses = ['border-[#16A34A]', 'bg-[#DCFCE7]/60', 'text-[#15803D]'];
+      const inactiveClasses = ['border-slate-200', 'bg-white', 'text-slate-700'];
+
+      donationButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          // Reseta o estilo de todos os botões
+          donationButtons.forEach((b) => {
+            b.classList.remove(...activeClasses);
+            b.classList.add(...inactiveClasses);
+          });
+
+          // Ativa o botão clicado
+          btn.classList.remove(...inactiveClasses);
+          btn.classList.add(...activeClasses);
+
+          // Atualiza a mensagem de impacto correspondente
+          const value = btn.getAttribute('data-value');
+          if (impactMessage && impactTexts[value]) {
+            impactMessage.innerHTML = impactTexts[value];
+          }
+        });
+      });
+
+      // -----------------------------------------------------------------------
+      // 3. Cópia da Chave PIX com Feedback Visual (compatível com iframes)
+      // -----------------------------------------------------------------------
+      const copyPixBtn = document.getElementById('copy-pix-btn');
+      const copyPixBtnText = document.getElementById('copy-pix-btn-text');
+      const pixKeyInput = document.getElementById('pix-key-display');
+      const copyFeedback = document.getElementById('copy-feedback');
+      let feedbackTimeout = null;
+
+      function showCopySuccess() {
+        if (copyFeedback) {
+          copyFeedback.classList.remove('hidden');
+          copyFeedback.classList.add('flex');
+        }
+        if (copyPixBtnText) {
+          copyPixBtnText.textContent = 'Chave Copiada!';
+        }
+
+        clearTimeout(feedbackTimeout);
+        feedbackTimeout = setTimeout(() => {
+          if (copyPixBtnText) {
+            copyPixBtnText.textContent = 'Copiar Chave PIX';
+          }
+        }, 3000);
+      }
+
+      if (copyPixBtn && pixKeyInput) {
+        copyPixBtn.addEventListener('click', () => {
+          try {
+            // Seleciona o texto do input e copia usando execCommand (alta compatibilidade)
+            pixKeyInput.select();
+            pixKeyInput.setSelectionRange(0, 99999);
+            const copied = document.execCommand('copy');
+
+            if (copied) {
+              showCopySuccess();
+            } else if (navigator.clipboard && navigator.clipboard.writeText) {
+              // Fallback moderno caso execCommand retorne false
+              navigator.clipboard.writeText(pixKeyInput.value).then(showCopySuccess);
+            }
+          } catch (err) {
+            // Fallback silencioso mantendo o texto selecionado para cópia manual
+            pixKeyInput.select();
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
