@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="google-site-verification" content="AZ7-zvEx95JjlhF2PiJb6LsuVBvyjYs-xjD0yoJvRKg"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cadastro para o público externo · Tuca</title><meta name="description" content="Aprenda inglês de graça com o Tuca, mesmo fora da escola. Crie sua conta e, se puder, contribua com o projeto por Pix.">
+<link rel="icon" type="image/svg+xml" href="tuca.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9199513966040235" crossorigin="anonymous"></script>
+</head><body>
+<div class="wrap"><header><a class="brand" href="index.html">Tuca<span>.</span></a>
+<nav aria-label="Principal"><a href="index.html">Início</a><a href="blog.html">Artigos</a><a href="sobre.html">Sobre</a><a href="contato.html">Contato</a><a class="btn primary sm" href="https://tucaenglishclass.vercel.app" rel="noopener">Acessar o app</a></nav></header></div>
+<main class="ext">
+<section class="band"><div class="wrap">
+<h1 style="font-size:clamp(2rem,5vw,3.2rem);margin-top:24px">Venha aprender inglês com o Tuca</h1>
+<p class="lead">Um projeto educacional gratuito, criado em sala de aula e agora aberto para quem está fora da escola.</p>
+<div class="cols"><div>
+<h2>Como o projeto começou</h2>
+<p>O Tuca nasceu dentro de uma escola, para ajudar alunos a aprender inglês no próprio ritmo, com trilhas curtas, revisão inteligente e acompanhamento do professor. Os alunos gostaram, contaram para amigos e familiares, e começaram a chegar pedidos de pessoas de fora da escola. Por isso abrimos o cadastro para o público externo.</p>
+<h2>O que você encontra</h2>
+<ul><li>Trilhas de inglês nível A1, com situações do dia a dia.</li><li>Pontos, sequência diária e emblemas para manter a motivação.</li><li>Revisão espaçada (SM-2) para fixar o vocabulário.</li><li>Tudo em português e gratuito.</li></ul>
+<h2>Quer ajudar?</h2>
+<p>O Tuca é gratuito e continuará sendo, mas manter a plataforma no ar e levá-la a mais escolas públicas e comunidades tem custos. Se você puder, uma pequena contribuição por Pix faz muita diferença. <strong>Não é obrigatório</strong> e não muda nada no seu acesso: se não puder contribuir, venha do mesmo jeito.</p>
+</div>
+<div class="extbox">
+<h2>Crie sua conta</h2>
+<p>Clique no botão abaixo. Você será levado ao aplicativo para criar seu cadastro como aluno externo.</p>
+<a class="btn primary" href="https://tucaenglishclass.vercel.app/" rel="noopener">Criar minha conta no Tuca</a>
+<p class="meta" style="margin:10px 0 0;font-size:.95rem">Já tem conta? Use o mesmo botão para entrar.</p>
+<div class="pix" id="pix" style="display:none">
+<h3>Contribuição voluntária via Pix</h3>
+<p style="margin:0">Se quiser apoiar o projeto, use a chave abaixo. Qualquer valor ajuda.</p>
+<img id="pixqr" alt="QR Code do Pix" style="display:none">
+<code id="pixkey"></code>
+<p class="meta" id="pixnome" style="margin:0 0 8px"></p>
+<button type="button" class="btn sm" id="pixcopy">Copiar chave Pix</button>
+</div></div></div></div></section>
+<section><div class="wrap" style="max-width:760px"><h2>Perguntas frequentes</h2>
+<h3>Preciso pagar?</h3><p>Não. O acesso é gratuito. A contribuição por Pix é totalmente voluntária.</p>
+<h3>Quem pode se cadastrar?</h3><p>Qualquer pessoa que queira começar a aprender inglês. Menores de 18 anos devem ter a autorização de um responsável.</p>
+<h3>Como meus dados são tratados?</h3><p>Leia a <a href="privacidade.html">política de privacidade</a>.</p>
+<h3>Tenho dúvidas ou quero levar o Tuca para uma escola.</h3><p>Fale pela página de <a href="contato.html">contato</a>.</p></div></section>
+</main>
+<script src="config.js"></script>
+<script>
+(function(){
+  var c=window.TUCA_CONFIG||{};
+  if(!c.PIX_CHAVE)return;
+  document.getElementById('pix').style.display='';
+  document.getElementById('pixkey').textContent=c.PIX_CHAVE;
+  if(c.PIX_NOME)document.getElementById('pixnome').textContent='Favorecido: '+c.PIX_NOME;
+  if(c.PIX_QR){var q=document.getElementById('pixqr');q.src=c.PIX_QR;q.style.display='block';}
+  var b=document.getElementById('pixcopy');
+  b.onclick=function(){
+    var done=function(){b.textContent='Chave copiada!';setTimeout(function(){b.textContent='Copiar chave Pix';},2500);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(c.PIX_CHAVE).then(done,function(){prompt('Copie a chave Pix:',c.PIX_CHAVE);});}
+    else{prompt('Copie a chave Pix:',c.PIX_CHAVE);}
+  };
+})();
+</script>
+<footer><div class="wrap"><div><strong class="brand">Tuca<span>.</span></strong><br>Projeto educacional gratuito para escolas públicas e comunidades.<br>Lucas do Rio Verde, MT.</div><div><a href="blog.html">Artigos</a><br><a href="sobre.html">Sobre</a><br><a href="contato.html">Contato</a><br><a href="publico-externo.html">Para quem está fora da escola</a><br><a href="privacidade.html">Política de privacidade</a></div><div><strong>Siga o Professor Kennedy</strong><div class="social"><a href="https://www.instagram.com/professorkennedydc/" target="_blank" rel="noopener me">Instagram</a><a href="https://www.youtube.com/@professorkennedydc" target="_blank" rel="noopener me">YouTube</a><a href="https://www.tiktok.com/@professorkennedydc" target="_blank" rel="noopener me">TikTok</a></div></div></div></footer></body></html>
